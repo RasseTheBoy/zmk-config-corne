@@ -27,6 +27,15 @@
             >;
         };
 
+        layer_4 {
+            bindings = <
+&kp ESCAPE  &trans       &trans     &kp AMPERSAND    &kp PERCENT   &kp DOLLAR    &kp PLUS      &kp TILDE  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp BACKSLASH  &kp LC(BACKSPACE)
+&trans      &kp AT_SIGN  &kp HASH   &kp EXCLAMATION  &kp QUESTION  &trans        &kp MINUS     &kp EQUAL  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH      &kp GRAVE
+&trans      &trans       &kp K_CUT  &kp K_COPY       &kp K_PASTE   &trans        &kp ASTERISK  &kp CARET  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PIPE       &trans
+                                    &trans           &trans        &trans        &trans        &mo 3      &trans
+            >;
+        };
+
         lower_layer {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
@@ -38,22 +47,7 @@
 &kp ESCAPE  &trans  &trans  &trans  &trans  &trans    &kp PRINTSCREEN  &trans      &trans         &trans     &trans         &kp LC(BSPC)
 &trans      &kp N1  &kp N2  &kp N3  &kp N4  &kp N5    &kp HOME         &kp LEFT    &kp DOWN       &kp UP     &kp RIGHT      &kp END
 &trans      &kp N6  &kp N7  &kp N8  &kp N9  &kp N0    &kp INSERT       &kp K_BACK  &kp PAGE_DOWN  &kp PG_UP  &kp K_FORWARD  &kp DEL
-                            &trans  &trans  &trans    &kp ESCAPE       &mo 3       &trans
-            >;
-        };
-
-        raise_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
-            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
-            bindings = <
-&kp ESCAPE  &trans       &trans     &kp AMPERSAND    &kp PERCENT   &kp DOLLAR    &kp PLUS      &kp TILDE  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp BACKSLASH  &kp LC(BACKSPACE)
-&trans      &kp AT_SIGN  &kp HASH   &kp EXCLAMATION  &kp QUESTION  &trans        &kp MINUS     &kp EQUAL  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH      &kp GRAVE
-&trans      &trans       &kp K_CUT  &kp K_COPY       &kp K_PASTE   &trans        &kp ASTERISK  &kp CARET  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PIPE       &trans
-                                    &trans           &mo 3         &trans        &trans        &trans     &trans
+                            &trans  &mo 3   &trans    &kp ESCAPE       &trans      &trans
             >;
         };
 
