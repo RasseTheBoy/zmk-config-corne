@@ -23,6 +23,20 @@
             bindings = <&kp R &kp N3 &kp N4 &kp L &kp W &kp N0 &kp R &kp L &kp D>;
             label = "DESKTOP_PSWD";
         };
+
+        fcb_full: fcb {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp LS(ENTER) &kp GRAVE &kp GRAVE &kp GRAVE>;
+            label = "Fenced Code Block - Full";
+        };
+
+        fcb_single: fcb_single {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE>;
+            label = "Fenced Code Block - Single";
+        };
     };
 
     behaviors {
@@ -42,6 +56,17 @@
             label = "Shift Caps Word";
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&caps_word>;
+        };
+
+        auto_fcb: auto_fcb {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Automatic Fenced Code Block";
+            bindings = <&fcb_full>, <&fcb_single>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <400>;
+            quick-tap-ms = <400>;
+            require-prior-idle-ms = <400>;
         };
     };
 
@@ -65,10 +90,10 @@
 
         layer_4 {
             bindings = <
-&kp ESCAPE  &trans       &trans     &kp AMPERSAND    &kp PERCENT   &kp DOLLAR    &kp PLUS       &kp TILDE  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp BACKSLASH  &kp BACKSPACE
-&trans      &kp AT_SIGN  &kp HASH   &kp EXCLAMATION  &kp QUESTION  &trans        &kp MINUS      &kp EQUAL  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH      &kp GRAVE
-&trans      &trans       &kp K_CUT  &kp K_COPY       &kp K_PASTE   &trans        &kp ASTERISK   &kp CARET  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PIPE       &trans
-                                    &trans           &trans        &trans        &kp BACKSPACE  &mo 3      &trans
+&kp ESCAPE     &trans       &trans     &kp AMPERSAND    &kp PERCENT   &kp DOLLAR    &kp PLUS       &kp TILDE  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp BACKSLASH  &kp BACKSPACE
+&auto_fcb 0 0  &kp AT_SIGN  &kp HASH   &kp EXCLAMATION  &kp QUESTION  &trans        &kp MINUS      &kp EQUAL  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH      &kp GRAVE
+&trans         &trans       &kp K_CUT  &kp K_COPY       &kp K_PASTE   &trans        &kp ASTERISK   &kp CARET  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PIPE       &trans
+                                       &trans           &trans        &trans        &kp BACKSPACE  &mo 3      &trans
             >;
         };
 
