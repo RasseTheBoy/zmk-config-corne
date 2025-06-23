@@ -47,8 +47,8 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <400>;
-            quick-tap-ms = <400>;
-            require-prior-idle-ms = <400>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <200>;
             flavor = "tap-preferred";
         };
 
@@ -115,10 +115,10 @@
 
         layer_3 {
             bindings = <
-&kp ESCAPE  &trans  &kp K_LOCK  &kp LA(LS(LC(F3)))  &kp K_POWER  &trans     &mkp LCLK         &mmv MOVE_LEFT  &mmv MOVE_DOWN        &mmv MOVE_UP          &mmv MOVE_RIGHT  &mkp RCLK
-&kp F11     &kp F1  &kp F2      &kp F3              &kp F4       &kp F5     &kp C_PLAY_PAUSE  &kp C_PREV      &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_NEXT       &kp K_MUTE
-&kp F12     &kp F6  &kp F7      &kp F8              &kp F9       &kp F10    &trans            &trans          &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &desktop_pswd    &laptop_pswd
-                                &trans              &trans       &trans     &trans            &trans          &trans
+&kp ESCAPE  &trans  &kp LS(LC(LA(F2)))  &kp LA(LS(LC(F3)))  &kp K_POWER  &trans     &mkp LCLK         &mmv MOVE_LEFT  &mmv MOVE_DOWN        &mmv MOVE_UP          &mmv MOVE_RIGHT  &mkp RCLK
+&kp F11     &kp F1  &kp F2              &kp F3              &kp F4       &kp F5     &kp C_PLAY_PAUSE  &kp C_PREV      &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_NEXT       &kp K_MUTE
+&kp F12     &kp F6  &kp F7              &kp F8              &kp F9       &kp F10    &trans            &trans          &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &desktop_pswd    &laptop_pswd
+                                        &trans              &trans       &trans     &trans            &trans          &trans
             >;
         };
     };
