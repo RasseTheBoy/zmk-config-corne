@@ -27,7 +27,7 @@
         fcb_full: fcb {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp LS(ENTER) &kp GRAVE &kp GRAVE &kp GRAVE>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp LS(ENTER) &kp LS(ENTER) &kp GRAVE &kp GRAVE &kp GRAVE &kp UP_ARROW>;
             label = "Fenced Code Block - Full";
         };
 
@@ -40,15 +40,16 @@
     };
 
     behaviors {
-        hm: hm {
+        ht_kp: ht_kp {
             compatible = "zmk,behavior-hold-tap";
-            label = "Homerow Mods";
+            label = "Hold Tap - Key Press";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <400>;
             quick-tap-ms = <400>;
             require-prior-idle-ms = <400>;
+            flavor = "tap-preferred";
         };
 
         scw: scw {
@@ -81,23 +82,23 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&hm ESCAPE TAB  &kp Q  &kp W        &kp E         &kp R          &kp T        &kp Y    &kp U  &kp I      &kp O    &kp P        &kp LC(BSPC)
-&kp SQT         &kp A  &kp S        &kp D         &kp F          &kp G        &kp H    &kp J  &kp K      &kp L    &kp COLON    &kp SQT
-&scw            &kp Z  &hm K_CUT X  &hm K_COPY C  &hm K_PASTE V  &kp B        &kp N    &kp M  &kp COMMA  &kp DOT  &key_repeat  &scw
-                                    &kp LGUI      &mo 1          &kp SPACE    &kp RET  &mo 2  &kp RCTRL
+&ht_kp ESCAPE TAB  &kp Q  &kp W           &kp E            &kp R             &kp T                      &kp Y                     &kp U  &kp I      &kp O    &kp P        &kp LC(BSPC)
+&kp SQT            &kp A  &ht_kp LC(S) S  &kp D            &kp F             &kp G                      &kp H                     &kp J  &kp K      &kp L    &kp COLON    &kp SQT
+&scw               &kp Z  &ht_kp K_CUT X  &ht_kp K_COPY C  &ht_kp K_PASTE V  &kp B                      &kp N                     &kp M  &kp COMMA  &kp DOT  &key_repeat  &scw
+                                          &kp LGUI         &mo 1             &ht_kp LEFT_SHIFT SPACE    &ht_kp RIGHT_SHIFT ENTER  &mo 2  &kp RCTRL
             >;
         };
 
-        layer_4 {
+        layer_1 {
             bindings = <
-&kp ESCAPE     &trans       &trans     &kp AMPERSAND    &kp PERCENT   &kp DOLLAR    &kp PLUS       &kp TILDE  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp BACKSLASH  &kp BACKSPACE
-&auto_fcb 0 0  &kp AT_SIGN  &kp HASH   &kp EXCLAMATION  &kp QUESTION  &trans        &kp MINUS      &kp EQUAL  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH      &kp GRAVE
-&trans         &trans       &kp K_CUT  &kp K_COPY       &kp K_PASTE   &trans        &kp ASTERISK   &kp CARET  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PIPE       &trans
-                                       &trans           &trans        &trans        &kp BACKSPACE  &mo 3      &trans
+&kp ESCAPE     &trans       &trans     &kp AMPERSAND    &kp PERCENT   &kp DOLLAR    &kp TILDE      &kp PLUS                 &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp BACKSLASH  &kp BACKSPACE
+&auto_fcb 0 0  &kp AT_SIGN  &kp HASH   &kp EXCLAMATION  &kp QUESTION  &trans        &kp MINUS      &ht_kp UNDERSCORE EQUAL  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH      &kp GRAVE
+&trans         &trans       &kp K_CUT  &kp K_COPY       &kp K_PASTE   &trans        &kp CARET      &kp ASTERISK             &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PIPE       &trans
+                                       &trans           &trans        &trans        &kp BACKSPACE  &mo 3                    &trans
             >;
         };
 
-        lower_layer {
+        layer_2 {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
             // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
@@ -105,19 +106,19 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp ESCAPE  &trans  &trans  &trans  &trans  &trans          &kp PRINTSCREEN  &trans      &trans         &trans     &hm LC(DELETE) DELETE  &kp BSPC
-&kp LCTRL   &kp N1  &kp N2  &kp N3  &kp N4  &kp N5          &kp HOME         &kp LEFT    &kp DOWN       &kp UP     &kp RIGHT              &kp END
-&trans      &kp N6  &kp N7  &kp N8  &kp N9  &kp N0          &kp INSERT       &kp K_BACK  &kp PAGE_DOWN  &kp PG_UP  &kp K_FORWARD          &trans
+&kp ESCAPE  &trans  &trans  &trans  &trans  &trans          &kp PRINTSCREEN  &trans      &trans         &trans     &ht_kp LC(DELETE) DELETE  &kp BSPC
+&kp LCTRL   &kp N1  &kp N2  &kp N3  &kp N4  &kp N5          &kp HOME         &kp LEFT    &kp DOWN       &kp UP     &kp RIGHT                 &kp END
+&trans      &kp N6  &kp N7  &kp N8  &kp N9  &kp N0          &kp INSERT       &kp K_BACK  &kp PAGE_DOWN  &kp PG_UP  &kp K_FORWARD             &trans
                             &trans  &mo 3   &kp LEFT_ALT    &trans           &trans      &trans
             >;
         };
 
         layer_3 {
             bindings = <
-&kp ESCAPE  &trans  &kp K_LOCK  &kp C_RESET  &kp K_POWER  &trans     &mkp LCLK         &mmv MOVE_LEFT  &mmv MOVE_DOWN        &mmv MOVE_UP          &mmv MOVE_RIGHT  &mkp RCLK
-&kp F11     &kp F1  &kp F2      &kp F3       &kp F4       &kp F5     &kp C_PLAY_PAUSE  &kp C_PREV      &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_NEXT       &kp K_MUTE
-&kp F12     &kp F6  &kp F7      &kp F8       &kp F9       &kp F10    &trans            &trans          &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &desktop_pswd    &laptop_pswd
-                                &trans       &trans       &trans     &trans            &trans          &trans
+&kp ESCAPE  &trans  &kp K_LOCK  &kp LA(LS(LC(F3)))  &kp K_POWER  &trans     &mkp LCLK         &mmv MOVE_LEFT  &mmv MOVE_DOWN        &mmv MOVE_UP          &mmv MOVE_RIGHT  &mkp RCLK
+&kp F11     &kp F1  &kp F2      &kp F3              &kp F4       &kp F5     &kp C_PLAY_PAUSE  &kp C_PREV      &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_NEXT       &kp K_MUTE
+&kp F12     &kp F6  &kp F7      &kp F8              &kp F9       &kp F10    &trans            &trans          &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &desktop_pswd    &laptop_pswd
+                                &trans              &trans       &trans     &trans            &trans          &trans
             >;
         };
     };
