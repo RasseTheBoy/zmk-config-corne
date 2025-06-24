@@ -78,6 +78,15 @@
             flavor = "hold-preferred";
             hold-while-undecided;
         };
+
+        ht_kp_long: ht_kp_long {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_KP_LONG";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <500>;
+        };
     };
 
     keymap {
@@ -91,10 +100,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&ht_kp ESCAPE TAB  &kp Q  &kp W           &kp E            &kp R             &kp T                          &kp Y                         &kp U           &kp I      &kp O    &kp P        &kp LC(BSPC)
-&kp SQT            &kp A  &ht_kp LC(S) S  &kp D            &kp F             &kp G                          &kp H                         &ht_kp UNDER J  &kp K      &kp L    &kp COLON    &kp SQT
-&scw               &kp Z  &ht_kp K_CUT X  &ht_kp K_COPY C  &ht_kp K_PASTE V  &kp B                          &kp N                         &kp M           &kp COMMA  &kp DOT  &key_repeat  &scw
-                                          &kp LGUI         &mo 1             &ht_kp_hwu LEFT_SHIFT SPACE    &ht_kp_hwu RIGHT_SHIFT ENTER  &mo 2           &kp RCTRL
+&ht_kp ESCAPE TAB  &kp Q  &kp W                &kp E                 &kp R                  &kp T                          &kp Y                         &kp U           &kp I      &kp O    &kp P        &kp LC(BSPC)
+&kp SQT            &kp A  &ht_kp_long LC(S) S  &kp D                 &kp F                  &kp G                          &kp H                         &ht_kp UNDER J  &kp K      &kp L    &kp COLON    &kp SQT
+&scw               &kp Z  &ht_kp_long K_CUT X  &ht_kp_long K_COPY C  &ht_kp_long K_PASTE V  &kp B                          &kp N                         &kp M           &kp COMMA  &kp DOT  &key_repeat  &scw
+                                               &kp LGUI              &mo 1                  &ht_kp_hwu LEFT_SHIFT SPACE    &ht_kp_hwu RIGHT_SHIFT ENTER  &mo 2           &kp RCTRL
             >;
         };
 
